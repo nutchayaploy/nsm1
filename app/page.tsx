@@ -19,6 +19,7 @@ import {
   saveIsAdmin,
   getStageForPoints,
 } from '../lib/storage';
+import { INITIAL_MEMBERS, INITIAL_QUESTS, INITIAL_CONFIG, INITIAL_TRANSACTIONS } from '../lib/mockData';
 import { sounds } from '../lib/sound';
 import Navbar from '../components/Navbar';
 import MemberView from '../components/MemberView';
@@ -26,10 +27,10 @@ import AdminDashboard from '../components/AdminDashboard';
 import LoginModal from '../components/LoginModal';
 
 export default function HomePage() {
-  const [members, setMembers] = useState<Member[]>([]);
-  const [quests, setQuests] = useState<Quest[]>([]);
-  const [config, setConfig] = useState<SystemConfig | null>(null);
-  const [transactions, setTransactions] = useState<PointTransaction[]>([]);
+  const [members, setMembers] = useState<Member[]>(INITIAL_MEMBERS);
+  const [quests, setQuests] = useState<Quest[]>(INITIAL_QUESTS);
+  const [config, setConfig] = useState<SystemConfig>(INITIAL_CONFIG);
+  const [transactions, setTransactions] = useState<PointTransaction[]>(INITIAL_TRANSACTIONS);
   const [currentMember, setCurrentMember] = useState<Member | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [view, setView] = useState<'member' | 'admin'>('member');
@@ -40,7 +41,7 @@ export default function HomePage() {
   // Quick search input on landing hero
   const [heroSearch, setHeroSearch] = useState('');
 
-  // Initial load from storage
+  // Initial load from storage on client mount
   useEffect(() => {
     const loadedMembers = getStoredMembers();
     const loadedQuests = getStoredQuests();
@@ -57,10 +58,10 @@ export default function HomePage() {
 
     if (savedMid) {
       const found = loadedMembers.find(m => m.memberId === savedMid);
-      if (found) setCurrentMember(found);
-    } else if (loadedMembers.length > 0 && !savedAdmin) {
-      // Default to first member to demonstrate interactive pet immediately!
-      setCurrentMember(loadedMembers[0]);
+      if (found) {
+        setCurrentMember(found);
+        setView('member');
+      }
     }
 
     if (savedAdmin) {
@@ -90,19 +91,6 @@ export default function HomePage() {
     if (!isLoaded) return;
     saveTransactions(transactions);
   }, [transactions, isLoaded]);
-
-  if (!isLoaded || !config) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-sky-50 text-sky-700 font-bold text-sm">
-        <div className="flex flex-col items-center gap-3">
-          <div className="w-12 h-12 rounded-2xl bg-sky-500 text-white flex items-center justify-center text-2xl animate-bounce">
-            🦖
-          </div>
-          <span>กำลังโหลดระบบสมาชิก NSM Dino Club...</span>
-        </div>
-      </div>
-    );
-  }
 
   // Auth Handlers
   const handleMemberLogin = (member: Member) => {
@@ -411,6 +399,29 @@ export default function HomePage() {
               >
                 สำหรับเจ้าหน้าที่ (Admin)
               </button>
+            </div>
+
+            {/* Quick Demo Showcase Pills */}
+            <div className="pt-4 border-t border-sky-100 max-w-lg mx-auto">
+              <div className="text-[11px] font-semibold text-gray-400 mb-2">
+                ✨ หรือคลิกทดลองดูสัตว์เลี้ยงตัวอย่างในแต่ละระยะแต้ม:
+              </div>
+              <div className="flex flex-wrap justify-center gap-1.5 text-xs">
+                {members.slice(0, 5).map(m => {
+                  const mStage = getStageForPoints(m.points, config.stages);
+                  return (
+                    <button
+                      key={m.memberId}
+                      type="button"
+                      onClick={() => handleMemberLogin(m)}
+                      className="px-2.5 py-1 rounded-xl bg-white hover:bg-sky-50 text-sky-800 border border-sky-200 shadow-sm transition hover:scale-105"
+                    >
+                      <span className="mr-1">{mStage.stageIndex === 0 ? '🥚' : mStage.stageIndex === 1 ? '✨' : mStage.stageIndex === 2 ? '🐣' : mStage.stageIndex === 3 ? '🦖' : '🏆'}</span>
+                      <strong className="font-bold">{m.fullName.split(' ')[0]}</strong> ({m.points} แต้ม - {mStage.stage.nameTh.replace('ระยะ', '')})
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
         )}
