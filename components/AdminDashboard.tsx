@@ -53,17 +53,24 @@ export default function AdminDashboard({
       {/* Admin Top Header Card */}
       <div className="bg-white/95 rounded-3xl p-6 shadow-xl shadow-sky-100/50 border border-sky-100 backdrop-blur-sm">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-6 border-b border-gray-100">
-          <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200 mb-2">
-              <ShieldCheck className="w-3.5 h-3.5" />
-              <span>แผงควบคุมเจ้าหน้าที่ อพวช. (Admin Dashboard)</span>
+          <div className="flex items-center gap-3.5">
+            <img
+              src="/nsm-logo.webp"
+              alt="NSM Logo"
+              className="h-12 w-auto object-contain drop-shadow-sm"
+            />
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200 mb-1.5">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>แผงควบคุมเจ้าหน้าที่ อพวช. (Admin Dashboard)</span>
+              </div>
+              <h1 className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight flex items-center gap-2">
+                <span>ระบบสมาชิกและสัตว์เลี้ยงไดโนเสาร์ NSM</span>
+              </h1>
+              <p className="text-xs text-gray-500 mt-0.5">
+                จัดทำโดย NSM (องค์การพิพิธภัณฑ์วิทยาศาสตร์แห่งชาติ) • แอดมิน: <strong className="text-sky-700">adminnsm</strong>
+              </p>
             </div>
-            <h1 className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight flex items-center gap-2">
-              <span>ระบบสมาชิกและสัตว์เลี้ยงไดโนเสาร์ NSM</span>
-            </h1>
-            <p className="text-xs text-gray-500 mt-0.5">
-              ผู้ดูแลระบบ: <strong className="text-sky-700">adminnsm</strong> • อพวช. คลองห้า
-            </p>
           </div>
 
           {/* Action Buttons in Header */}

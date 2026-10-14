@@ -39,20 +39,23 @@ export default function Navbar({
           {/* Logo & Brand */}
           <div
             onClick={onOpenMember}
-            className="flex items-center gap-2.5 cursor-pointer group"
+            className="flex items-center gap-3 cursor-pointer group"
           >
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-sky-500 to-cyan-400 flex items-center justify-center text-xl shadow-md shadow-sky-200 group-hover:scale-105 transition">
-              🦖
-            </div>
+            <img
+              src="/nsm-logo.webp"
+              alt="NSM Logo"
+              className="h-10 sm:h-11 w-auto object-contain drop-shadow-sm group-hover:scale-105 transition"
+            />
+            <div className="h-8 w-px bg-sky-200 hidden sm:block" />
             <div>
               <div className="text-sm sm:text-base font-black text-sky-950 tracking-tight flex items-center gap-1.5">
                 <span>NSM Dino Club</span>
                 <span className="text-[10px] font-bold text-sky-600 bg-sky-50 px-2 py-0.5 rounded-full border border-sky-100">
-                  อพวช.
+                  🦖 สะสมแต้ม
                 </span>
               </div>
               <div className="text-[10px] text-gray-500 hidden sm:block truncate max-w-xs">
-                {config.museumName}
+                จัดทำโดย NSM (องค์การพิพิธภัณฑ์วิทยาศาสตร์แห่งชาติ)
               </div>
             </div>
           </div>

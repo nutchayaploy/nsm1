@@ -350,14 +350,18 @@ export default function HomePage() {
           />
         ) : (
           /* Landing Hero for Guests */
-          <div className="max-w-2xl mx-auto text-center py-10 sm:py-16 space-y-6">
-            <div className="w-20 h-20 rounded-3xl bg-gradient-to-tr from-sky-500 to-cyan-400 flex items-center justify-center text-4xl shadow-xl shadow-sky-200 mx-auto animate-bounce">
-              🦖
+          <div className="max-w-2xl mx-auto text-center py-8 sm:py-14 space-y-6">
+            <div className="flex items-center justify-center gap-3">
+              <img
+                src="/nsm-logo.webp"
+                alt="NSM Logo"
+                className="h-16 sm:h-20 w-auto object-contain drop-shadow-md hover:scale-105 transition"
+              />
             </div>
             <div className="space-y-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-sky-100 text-sky-800 border border-sky-200">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold bg-sky-100 text-sky-800 border border-sky-200">
                 <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                <span>องค์การพิพิธภัณฑ์วิทยาศาสตร์แห่งชาติ (อพวช.)</span>
+                <span>จัดทำโดย NSM (องค์การพิพิธภัณฑ์วิทยาศาสตร์แห่งชาติ)</span>
               </span>
               <h1 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">
                 สะสมแต้ม เลี้ยงไดโนเสาร์ <br />
@@ -413,10 +417,22 @@ export default function HomePage() {
       </main>
 
       {/* Footer */}
-      <footer className="w-full bg-white/70 border-t border-sky-100 py-4 text-center text-xs text-gray-500">
-        <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
-          <div>
-            © 2026 {config.museumName} • NSM Dino Gamification Point System
+      <footer className="w-full bg-white/85 border-t border-sky-100 py-6 text-center text-xs text-gray-500">
+        <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div className="flex items-center gap-3">
+            <img
+              src="/nsm-logo.webp"
+              alt="NSM Logo"
+              className="h-9 w-auto object-contain"
+            />
+            <div className="text-left">
+              <div className="font-bold text-gray-800 text-xs sm:text-sm">
+                จัดทำโดย NSM (องค์การพิพิธภัณฑ์วิทยาศาสตร์แห่งชาติ)
+              </div>
+              <div className="text-[11px] text-gray-500">
+                © 2026 {config.museumName} • NSM Dino Gamification Point System
+              </div>
+            </div>
           </div>
           <div className="flex items-center gap-3">
             <span className="text-[11px] text-gray-400">พัฒนาด้วย Next.js & Tailwind CSS โทนสีฟ้าสดใส</span>

@@ -96,6 +96,18 @@ export default function LoginModal({
           ✕
         </button>
 
+        {/* NSM Official Logo & Header in Modal */}
+        <div className="flex flex-col items-center mb-4">
+          <img
+            src="/nsm-logo.webp"
+            alt="NSM Logo"
+            className="h-10 w-auto object-contain mb-1 drop-shadow-sm"
+          />
+          <span className="text-[11px] font-bold text-sky-800 bg-sky-50 px-2.5 py-0.5 rounded-full border border-sky-100">
+            จัดทำโดย NSM (องค์การพิพิธภัณฑ์วิทยาศาสตร์แห่งชาติ)
+          </span>
+        </div>
+
         {/* Role Selector Tabs */}
         <div className="flex gap-1.5 p-1 bg-sky-50 rounded-2xl mb-6 border border-sky-100">
           <button

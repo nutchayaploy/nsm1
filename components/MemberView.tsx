@@ -234,7 +234,11 @@ export default function MemberView({
       </div>
 
       {/* Staff Admin Portal Access Link in Footer */}
-      <div className="text-center pt-4">
+      <div className="flex flex-col items-center justify-center pt-4 gap-1.5">
+        <div className="flex items-center gap-2 text-xs text-gray-500">
+          <img src="/nsm-logo.webp" alt="NSM" className="h-4 w-auto object-contain" />
+          <span>จัดทำโดย NSM (องค์การพิพิธภัณฑ์วิทยาศาสตร์แห่งชาติ)</span>
+        </div>
         <button
           onClick={onOpenAdmin}
           className="inline-flex items-center gap-1.5 text-xs text-sky-600/70 hover:text-sky-800 hover:underline transition"
